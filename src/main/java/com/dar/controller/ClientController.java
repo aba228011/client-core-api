@@ -1,15 +1,13 @@
 package com.dar.controller;
 
-
-import com.dar.model.ClientModel;
+import com.dar.model.ClientRequest;
+import com.dar.model.ClientResponse;
 import com.dar.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,12 +26,17 @@ public class ClientController {
     }
 
     @GetMapping("/all")
-    public List<ClientModel> getAllClients() {
+    public List<ClientResponse> getAllClients() {
         return clientService.getAllClients();
     }
 
-    @GetMapping("/{clientId}")
-    public ClientModel getClientById(@PathVariable String clientId) {
+    @PostMapping
+    public ClientResponse createClient(@Valid @RequestBody ClientRequest clientRequest) {
+        return clientService.createClient(clientRequest);
+    }
+
+    @GetMapping
+    public ClientResponse getClientById(@RequestParam String clientId) {
         return clientService.getClientById(clientId);
     }
 }

@@ -1,11 +1,14 @@
 package com.dar.service;
 
-import com.dar.model.ClientModel;
+import com.dar.model.ClientRequest;
+import com.dar.model.ClientResponse;
 
 import java.util.List;
 
 public interface IClientService {
-    List<ClientModel> getAllClients();
+    List<ClientResponse> getAllClients();
 
-    ClientModel getClientById(String clientId);
+    ClientResponse createClient(ClientRequest clientRequest);
+
+    ClientResponse getClientById(String clientId);
 }
