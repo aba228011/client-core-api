@@ -8,7 +8,7 @@ import java.util.List;
 public interface IClientService {
     List<ClientResponse> getAllClients();
 
-    ClientResponse createClient(ClientRequest clientRequest);
+    ClientResponse createClient(ClientRequest clientRequest, String clientId);
 
     ClientResponse getClientById(String clientId);
 }

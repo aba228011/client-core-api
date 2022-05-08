@@ -31,8 +31,9 @@ public class ClientController {
     }
 
     @PostMapping
-    public ClientResponse createClient(@Valid @RequestBody ClientRequest clientRequest) {
-        return clientService.createClient(clientRequest);
+    public ClientResponse createClient(@Valid @RequestBody ClientRequest clientRequest, @RequestParam String clientId) {
+        // clientId для того чтобы можно было найти информацию через айди в post-office-api getPaymentDetailsInfo методе
+        return clientService.createClient(clientRequest, clientId);
     }
 
     @GetMapping
